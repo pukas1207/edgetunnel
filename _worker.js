@@ -836,7 +836,7 @@ async function 读取config_JSON(env, host, userID, 重置配置 = false) {
             local: true, // true: 基于本地的优选地址  false: 优选订阅生成器
             本地IP库: {
                 随机IP: true, // 当 随机IP 为true时生效，启用随机IP的数量，否则使用KV内的ADD.txt
-                随机数量: 16,
+                随机数量: 30,
                 指定端口: -1,
             },
             SUB: null,
@@ -934,7 +934,7 @@ async function 读取config_JSON(env, host, userID, 重置配置 = false) {
     return config_JSON;
 }
 
-async function 生成随机IP(request, count = 16, 指定端口 = -1) {
+async function 生成随机IP(request, count = 30, 指定端口 = -1) {
     const asnMap = { '9808': 'cmcc', '4837': 'cu', '4134': 'ct' }, asn = request.cf.asn;
     const cidr_url = asnMap[asn] ? `https://raw.githubusercontent.com/cmliu/cmliu/main/CF-CIDR/${asnMap[asn]}.txt` : 'https://raw.githubusercontent.com/cmliu/cmliu/main/CF-CIDR.txt';
     const cfname = { '9808': 'CF移动优选', '4837': 'CF联通优选', '4134': 'CF电信优选' }[asn] || 'CF官方优选';
@@ -1433,3 +1433,4 @@ async function html1101(host, 访问IP) {
 </body>
 </html>`;
 }
+
